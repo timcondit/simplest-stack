@@ -1,0 +1,2 @@
+Flask-REST-JSONAPI==0.31.2
+Flask-SQLAlchemy==2.5.1
