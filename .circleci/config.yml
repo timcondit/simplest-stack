@@ -7,6 +7,12 @@ jobs:
   build-and-test:
     executor: python/default
     steps:
+      - run:
+          name: "What branch am I on now?"
+          command: echo $CIRCLE_BRANCH
+      - run:
+          name: "Print an env var stored in the Project"
+          command: echo ${PROJECT_ENV_VAR}
       - checkout
       - python/load-cache
       - python/install-deps
