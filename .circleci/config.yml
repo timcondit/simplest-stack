@@ -1,0 +1,35 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  build-and-test:
+    executor: python/default
+    steps:
+      - run:
+          name: "What branch am I on now?"
+          command: echo $CIRCLE_BRANCH
+      - run:
+          name: "Print an env var stored in the Project"
+          command: echo ${PROJECT_ENV_VAR}
+      - run:
+          name: Set Databricks workspace
+          command: |
+              echo 'export DATABRICKS_WORKSPACE=$(case $CIRCLE_BRANCH in "dev") echo -n "/development";; "staging") echo -n "/staging";; "master") echo -n "/production";; *) echo -n "/test";; esac)' >> $BASH_ENV
+              source $BASH_ENV
+      - run:
+          name: Which Databricks workspace?
+          command: echo ${DATABRICKS_WORKSPACE}
+      - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
+      # - run:
+      #     command: ./manage.py test
+      #     name: Test
+
+workflows:
+  main:
+    jobs:
+      - build-and-test
