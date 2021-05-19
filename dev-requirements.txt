@@ -4,7 +4,7 @@ wheel
 
 autopep8==1.5.3
 black==21.5b0
-boto3-stubs==1.13.25.0
+boto3-stubs==1.17.75
 coverage==5.5
 databricks-cli==0.11.0
 data-science-types==0.2.23
