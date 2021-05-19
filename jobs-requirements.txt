@@ -12,5 +12,5 @@ pyspark==3.0.0
 pyspark-stubs==3.0.0
 pytest==6.2.4
 pytest-mock==3.6.1
-requests==2.25.0
+requests==2.25.1
 twine
