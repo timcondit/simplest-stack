@@ -28,8 +28,39 @@ jobs:
       # - run:
       #     command: ./manage.py test
       #     name: Test
+  run-on-a-schedule:
+    executor: python/default
+    steps:
+      - run:
+          name: "What's my job name?"
+          command: echo "run-on-a-schedule"
+      - run:
+          name: "Is it safe to include a scheduled job along with regular triggered jobs?"
+          command: echo "We'll know soon I guess."
+      - run:
+          name: "Print an env var stored in the Project"
+          command: echo ${PROJECT_ENV_VAR}
+      - run:
+          name: Set Databricks workspace
+          command: |
+              echo 'export DATABRICKS_WORKSPACE=$(case $CIRCLE_BRANCH in "dev") echo -n "/development";; "staging") echo -n "/staging";; "master") echo -n "/production";; *) echo -n "/test";; esac)' >> $BASH_ENV
+              source $BASH_ENV
+      - run:
+          name: Which Databricks workspace?
+          command: echo ${DATABRICKS_WORKSPACE}
 
 workflows:
   main:
+    jobs:
+      - build-and-test
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - main
+                - dev
     jobs:
       - build-and-test
