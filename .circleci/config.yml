@@ -28,12 +28,13 @@ jobs:
       # - run:
       #     command: ./manage.py test
       #     name: Test
-  run-on-a-schedule:
+
+  query:
     executor: python/default
     steps:
       - run:
           name: "What's my job name?"
-          command: echo "run-on-a-schedule"
+          command: echo "query"
       - run:
           name: "Is it safe to include a scheduled job along with regular triggered jobs?"
           command: echo "We'll know soon I guess."
@@ -50,17 +51,18 @@ jobs:
           command: echo ${DATABRICKS_WORKSPACE}
 
 workflows:
+  version: 2
   main:
     jobs:
       - build-and-test
-  nightly:
+  build-on-schedule:
+    jobs:
+      - query
     triggers:
       - schedule:
-          cron: "10 8 * * *"
+          cron: "*/10 * * * *"
           filters:
             branches:
               only:
                 - main
                 - dev
-    jobs:
-      - run-on-a-schedule
