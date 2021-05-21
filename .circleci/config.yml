@@ -55,14 +55,15 @@ workflows:
   main:
     jobs:
       - build-and-test
-  build-on-schedule:
-    jobs:
-      - query
-    triggers:
-      - schedule:
-          cron: "0,10,20,30,40,50 * * * *"
-          filters:
-            branches:
-              only:
-                - main
-                - dev
+  # This config works. Stopping.
+#  build-on-schedule:
+#    jobs:
+#      - query
+#    triggers:
+#      - schedule:
+#          cron: "0,10,20,30,40,50 * * * *"
+#          filters:
+#            branches:
+#              only:
+#                - main
+#                - dev
