@@ -9,7 +9,7 @@ coverage==5.5
 databricks-cli==0.11.0
 data-science-types==0.2.23
 flake8==3.9.2
-importlib-metadata==1.7.0
+importlib-metadata==4.3.1
 invoke==1.4.1
 jsondiff==1.2.0
 jsonpatch==1.28
