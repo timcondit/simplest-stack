@@ -6,7 +6,7 @@ autopep8==1.5.7
 black==21.5b0
 boto3-stubs==1.17.75
 coverage==5.5
-databricks-cli==0.11.0
+databricks-cli==0.14.3
 data-science-types==0.2.23
 flake8==3.9.2
 importlib-metadata==1.7.0
