@@ -3,8 +3,8 @@ wheel
 -r requirements.txt
 
 koalas>=1.5.0
-mypy==0.782
-numpy==1.21.0
+mypy==0.910
+numpy==1.19.1
 packaging==20.7.0
 pandas>=1.0.5,<1.1.0
 python-dotenv==0.14.0
@@ -12,5 +12,5 @@ pyspark==3.0.0
 pyspark-stubs==3.0.0
 pytest==6.2.4
 pytest-mock==3.6.1
-requests==2.25.1
+requests==2.25.0
 twine
