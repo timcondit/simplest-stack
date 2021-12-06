@@ -3,7 +3,7 @@ wheel
 -r requirements.txt
 
 autopep8==1.5.7
-black==21.5b0
+black==21.12b0
 boto3-stubs==1.17.75
 coverage==5.5
 databricks-cli==0.14.3
