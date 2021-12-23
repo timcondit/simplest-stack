@@ -3,7 +3,7 @@ wheel
 -r requirements.txt
 
 koalas>=1.5.0
-mypy==0.782
+mypy==0.930
 numpy==1.21.0
 packaging==20.7.0
 pandas>=1.0.5,<1.1.0
